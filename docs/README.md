@@ -4,9 +4,9 @@ Crowdsourcing Automatic Transcription of Songs
 Authors:
 Jesse Allison, Daniel Shanahan, Indira Avendano
 
-## Website
+i## Website
 
-[LSU Music Cognition Lab](https://musiccog.lsu.edu/index.php/Projects)
+[LSU Music Cognition Lab](https://musiccog.lsu.edu/)
 
 [LSU Experimental Music & Digital Media](https://emdm.music.lsu.edu)
 
