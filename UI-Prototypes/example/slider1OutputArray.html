@@ -5,7 +5,8 @@
 		<script type="text/javascript" src="../dist/nexusUI.js"></script>
 		<!--<script type="text/javascript" src="../d3/d3.js"></script>-->
 		<!--<script type="text/javascript" src="../d3/d3.min.js"></script>-->
-		<script type="text/javascript" src="../Practice Code/output.js"></script>
+		<script type="text/javascript" src="../UI_Prototypes_Practice/output.js"></script>
+		<script type="text/javascript" src="../UI_Prototypes_Practice/modifiedTranscription.js"></script>
 		<!--<script type="text/plain" src="../Practice Code/output.txt"></script>-->
 
 
@@ -77,20 +78,21 @@
 			    nx.colorize("border", "#e4e4e4");
 			    nx.colorize("fill", "#eee");
 
-				var beat = slider1.set({
+				slider1.set({
 					value: beat1
 				}, true)  //understand what "true" does-- refer to
 
-				console.log(beat);
+				//console.log(beat);
 
-				var beatFinal;
 
 
                 slider1.on('*', function(data) { //the anon. function is parameter of slider1. Data is output of changed
                     //var arr = new Array();
 					var beatFinal = data.value; //values from user interaction
                     console.log(beatFinal);
-
+                    a[0]= beatFinal[0];
+                    storeModificationValues(a);
+					//typeof loggedValues; //logged values was said to be output array
                    	//for (beatFinal) {
                    	 //   changedBeats = arr[beatFinal];
 					//}
@@ -103,7 +105,9 @@
                     //nx.transmit();
                 })
 
-				storeBeatValues = function(){
+
+
+				/*storeBeatValues = function(){
                     var b = beatFinal;
                     var arr = [];
                     while(beatFinal){
@@ -111,7 +115,7 @@
 
 					}
                     console.log(arr);
-				}
+				}*/
 
 
 

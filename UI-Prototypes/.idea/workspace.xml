@@ -15,74 +15,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sliderVersion2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Practice Code/sliderVersion2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2907">
-              <caret line="171" column="9" lean-forward="false" selection-start-line="171" selection-start-column="9" selection-end-line="171" selection-end-column="9" />
-              <folding>
-                <marker date="1496853572448" expanded="true" signature="364:4645" ph="..." />
-                <marker date="1496853572448" expanded="true" signature="374:1969" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="2004:4631" ph="{...}" />
-                <marker date="1496853572448" expanded="true" signature="2020:2050" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="2064:2123" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="2154:2430" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="2444:2756" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="2770:2858" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="2873:3113" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="3130:3142" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="3406:3455" ph="{&quot;value&quot;: finalBeat1...}" />
-                <marker date="1496853572448" expanded="true" signature="3546:3686" ph="{...}" />
-                <marker date="1496853572448" expanded="true" signature="3701:3996" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="4010:4419" ph="/*...*/" />
-                <marker date="1496853572448" expanded="true" signature="4433:4621" ph="/*...*/" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="beat_times1.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Practice Code/beat_times1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="output.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Practice Code/output.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="3496" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="slider1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="slider1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/slider1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1625">
-              <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="slider1OutputArray.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/slider1OutputArray.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="output.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Practice Code/output.js">
+        <entry file="file://$PROJECT_DIR$/UI_Prototypes_Practice/output.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
@@ -91,43 +35,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="slider1Modified.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/slider1Modified.html">
+      <file leaf-file-name="slider1OutputArray.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/example/slider1OutputArray.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="1360">
+              <caret line="80" column="16" lean-forward="true" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="practiceAccessingData.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Practice Code/practiceAccessingData.js">
+      <file leaf-file-name="modifiedTranscription.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_Prototypes_Practice/modifiedTranscription.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="output.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Practice Code/output.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sliderVersion3.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Practice Code/sliderVersion3.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+            <state relative-caret-position="34">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="8" selection-end-column="1" />
               <folding>
-                <marker date="1496855358621" expanded="true" signature="1558:1610" ph="{&quot;value&quot;: finalBeat...}" />
+                <element signature="n#!!doc;n#storeModificationValues#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -142,6 +66,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -165,7 +92,10 @@
         <option value="$PROJECT_DIR$/Practice Code/output.txt" />
         <option value="$PROJECT_DIR$/Practice Code/sliderVersion3.html" />
         <option value="$PROJECT_DIR$/Practice Code/output.js" />
+        <option value="$PROJECT_DIR$/UI_Prototypes_Practice/output.js" />
         <option value="$PROJECT_DIR$/example/slider1.html" />
+        <option value="$PROJECT_DIR$/UI_Prototypes_Practice/modifiedTranscription.js" />
+        <option value="$PROJECT_DIR$/example/slider1OutputArray.html" />
       </list>
     </option>
   </component>
@@ -181,11 +111,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1084" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -201,40 +131,39 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nexusUI-master" />
+              <option name="myItemId" value="UI-Prototypes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nexusUI-master" />
+              <option name="myItemId" value="UI-Prototypes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nexusUI-master" />
+              <option name="myItemId" value="UI-Prototypes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nexusUI-master" />
+              <option name="myItemId" value="UI-Prototypes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Practice Code" />
+              <option name="myItemId" value="UI_Prototypes_Practice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nexusUI-master" />
+              <option name="myItemId" value="UI-Prototypes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nexusUI-master" />
+              <option name="myItemId" value="UI-Prototypes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -244,16 +173,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Java/nexusUI-master" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -280,9 +210,6 @@
       <method />
     </configuration>
     <configuration default="false" name="waveform.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/nexusUI-master/example/waveform.html">
-      <method />
-    </configuration>
-    <configuration default="false" name="slider1.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/nexusUI-master/example/slider1.html">
       <method />
     </configuration>
     <configuration default="false" name="output.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="output.js" working-dir="$PROJECT_DIR$/Practice Code">
@@ -396,20 +323,22 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+    <configuration default="false" name="slider1.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/nexusUI-master/example/slider1.html">
+      <method />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion2.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion3.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.waveform.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.slider1.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.slider1.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion2.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion3.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.waveform.html" />
       <item index="4" class="java.lang.String" itemvalue="Node.js.output.js" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.slider1.html" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.output.js" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.waveform.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion3.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion2.html" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.output.js" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.waveform.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion3.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.sliderVersion2.html" />
       </list>
     </recent_temporary>
   </component>
@@ -447,25 +376,29 @@
       <workItem from="1496886453096" duration="3603000" />
       <workItem from="1496926491864" duration="1568000" />
       <workItem from="1496929469263" duration="263000" />
+      <workItem from="1496932374053" duration="2912000" />
+      <workItem from="1496939395623" duration="29000" />
+      <workItem from="1496939469197" duration="3402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75617000" />
+    <option name="totallyTimeSpent" value="81960000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="953" y="0" width="974" height="1084" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15344468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4094166" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4158111" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -488,42 +421,9 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/slider1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="31" lean-forward="true" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readMe">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVSLines.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/readMe" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVSLines.js" />
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -539,27 +439,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readMe">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVSLines.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/readMe" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVSLines.js" />
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -575,20 +457,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readMe">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/readMe" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js" />
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -636,13 +506,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example/testingExcelValues.js" />
     <entry file="file://$PROJECT_DIR$/Practice Code/readMe2" />
-    <entry file="file://$PROJECT_DIR$/Practice Code/readMe">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/readMe" />
     <entry file="file://$PROJECT_DIR$/api/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1186">
@@ -650,13 +514,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVS.js" />
     <entry file="file://$PROJECT_DIR$/example/everywidget.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1377">
@@ -664,27 +522,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/beat_times.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/output">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVSLines.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/beat_times.csv" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/output" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/readingCVSLines.js" />
     <entry file="file://$USER_HOME$/little_client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -707,20 +547,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/require-command.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/stringToIntegers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="27" lean-forward="false" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/require-command.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/stringToIntegers.js" />
     <entry file="file://$PROJECT_DIR$/example/waveform.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -729,38 +557,10 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_d3.zip/d3.js" />
-    <entry file="file://$PROJECT_DIR$/Practice Code/parscsvFromScratch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/practiceFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="46" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/sliderVersion3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding>
-            <marker date="1496855358621" expanded="true" signature="1558:1610" ph="{&quot;value&quot;: finalBeat...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/output.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/parscsvFromScratch.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/practiceFunctions.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/sliderVersion3.html" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/output.csv" />
     <entry file="file://$PROJECT_DIR$/dist/nexusUI.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4811">
@@ -772,75 +572,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="8009" column="69" lean-forward="false" selection-start-line="8009" selection-start-column="69" selection-end-line="8009" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/beat_times1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/practiceAccessingData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Practice Code/beat_times1.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/practiceAccessingData.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/sliderVersion2.html" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/output.js" />
+    <entry file="file://$PROJECT_DIR$/Practice Code/output.txt" />
     <entry file="file://$PROJECT_DIR$/example/slider1Modified.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/sliderVersion2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2907">
-          <caret line="171" column="9" lean-forward="false" selection-start-line="171" selection-start-column="9" selection-end-line="171" selection-end-column="9" />
-          <folding>
-            <marker date="1496853572448" expanded="true" signature="364:4645" ph="..." />
-            <marker date="1496853572448" expanded="true" signature="374:1969" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="2004:4631" ph="{...}" />
-            <marker date="1496853572448" expanded="true" signature="2020:2050" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="2064:2123" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="2154:2430" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="2444:2756" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="2770:2858" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="2873:3113" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="3130:3142" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="3406:3455" ph="{&quot;value&quot;: finalBeat1...}" />
-            <marker date="1496853572448" expanded="true" signature="3546:3686" ph="{...}" />
-            <marker date="1496853572448" expanded="true" signature="3701:3996" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="4010:4419" ph="/*...*/" />
-            <marker date="1496853572448" expanded="true" signature="4433:4621" ph="/*...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/output.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Practice Code/output.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="3496" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/slider1OutputArray.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -850,8 +590,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example/slider1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1625">
-          <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
+        <state relative-caret-position="136">
+          <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_Prototypes_Practice/output.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_Prototypes_Practice/modifiedTranscription.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc;n#storeModificationValues#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/slider1OutputArray.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="16" lean-forward="true" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
           <folding />
         </state>
       </provider>

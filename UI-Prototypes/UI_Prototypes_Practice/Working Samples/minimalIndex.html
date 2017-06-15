@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+        svg {
+            border: solid 1px #aaa;
+        }
+
+        #checks {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<!--<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>-->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<!--<script type="text/javascript" src="OrganizingInteractiveBarsWithBarGraph.js"></script>-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="gettingJSON.js"></script>
+<script type="text/javascript" src="simpleGraph.js"></script>
+
+<!--<div id="checks">
+    X-axis:<input type="checkbox" id="xChecked" checked/>
+    Y-axis:<input type="checkbox" id="yChecked" checked/>
+</div>-->
+
+<script>
+    /*$('#xChecked').click(function() {
+     isXChecked = !isXChecked;
+     dragbarleft
+     .attr("fill-opacity", (isXChecked ? 0.5 : 0))
+     .attr("cursor", (isXChecked ? "ew-resize" : "move"));
+     dragbarright
+     .attr("fill-opacity", (isXChecked ? 0.5 : 0))
+     .attr("cursor", (isXChecked ? "ew-resize" : "move"));
+     });
+
+     $('#yChecked').click(function() {
+     isYChecked = !isYChecked;
+     dragbartop
+     .attr("fill-opacity", (isYChecked ? 0.5 : 0))
+     .attr("cursor", (isYChecked ? "ns-resize" : "move"));
+     dragbarbottom
+     .attr("fill-opacity", (isYChecked ? 0.5 : 0))
+     .attr("cursor", (isYChecked ? "ns-resize" : "move"));
+     });*/
+
+    accessData();
+
+    var w = 750,  //SVG CANVAS
+        h = 450,
+        r = 120;
+
+    //IN HORIZ. BAR CHART, we need width to be a dynamic variable and apply to multiple rect bars. Height will be 100
+    var //width = 300, //ORIGINAL RECTANGLE ELEMENT MAX DIMENSIONS...this should be a dynamic variable
+        //width1 = function(d) {return xScale(d);},
+        height = 20, //DIMENSIONS OF RECTANGLE
+        dragbarw = 10;
+    //the domain should be [0,2], but scaled to range below
+    //xScale range should be [0,740], since canvas is 750 MAX
+    /*
+    var width = function(d) {return xscale(d);};
+    */
+
+
+
+     function range(start, end, step = 1) {
+     const len = Math.floor((end - start) / step) + 1
+     return Array(len).fill().map((_, idx) => start + (idx * step))
+     }
+
+     var duration = range(0,2,0.08);
+     //console.log(duration);
+
+
+     var xScale = d3.scale.linear()//scales the given DOMAIN to the range
+     //var xScale = d3.scaleBand()
+     .domain([0,2]) //duration?--if "duration" bars are not shown and x axis has no ticks. We will scale [0,2] using duration variable
+     .range([0,675]);
+
+     var xAxis = d3.svg.axis();
+     xAxis
+     .orient('bottom')
+     .scale(xScale)
+     .tickSize(1)
+     .tickFormat(function (d,i) { return duration[i];}) //if this is duration
+     .tickValues(duration);
+
+     /*var x_xis = svg.append('g')
+     .attr("transform", "translate( , )") //NEED TO MODIFY VALUES INSIDE TRANSLATE based on position of x axis with rectangle bar STARTING position
+     .attr('id','xAxis')
+     .call(xAxis);*/
+
+////////////////////////Method expression is not of function type
+
+    var drag = d3.behavior.drag() //when moving rect from left side, other components of rectangle need to be resized
+        //.origin(Object)             //so we must include this...i think
+        .on("drag", dragmove);
+
+
+    var svg = d3.select("body").append("svg") // SETS THE SVG CANVAS WITH DEFINED VARIABLES
+        .attr("width", w)
+        .attr("height", h);
+
+    //////////
+
+    var x_xis = svg.append('g')
+        .attr("transform", "translate(0,45)") //NEED TO MODIFY VALUES INSIDE TRANSLATE based on position of x axis with rectangle bar STARTING position
+        .attr('id','xAxis')
+        .call(xAxis);
+
+    /////////////
+
+    var newg = svg.append("g")//new group of elements within SVG body
+    //.data([{x:0, y: 0}])
+    .attr("transform", "translate(0,0)")
+        //.attr("transform", function(d){return "translate(0," + x(d) + ")"})
+    .attr('id','bars')
+    .selectAll('rect')
+    .data(rangeOfDurationValues)
+    .enter();
+        //.data([{x: 0, y: 0}]); //THIS ESTABLISHES X AND Y POSITION OF THE RECTANGLE NOT ITS WIDTH AND HEIGHT. THAT IS ALREADY DEFINED
+    //y position needs to be based on midi value and x position will always be 0 (or wherever the x coordinate of the vertical axis is)
+    //for now, "y" should be based on the "duration" value's index number
+
+    var dragrect = newg.append("rect") //this section needs to create multiple rectangles based on amount of data values
+        .attr("id", "bars")
+        //.attr("x",0)
+        //.attr("y",0)
+        .attr("x", function (d) {
+            return d.x;
+        })
+        .attr("y", function (d) {
+            return d.y;
+        })
+        .attr("height", height) //height of rectangle bar itself, not its position
+        //.attr("width", width) //width should be decided by duration Values
+        .attr("width", function(d) {return xScale(d);})
+        /////
+        .attr("fill-opacity", .5)
+        .attr("cursor", "move")
+        .call(drag);
+        /*.call(d3.behavior.drag() //when moving rect from left side, other components of rectangle need to be resized
+            .origin(Object)             //so we must include this...i think
+            .on("drag", dragmove));*/
+
+
+    function dragmove(d) {
+        //dragrect
+            //.attr("x", d.x = Math.max(0, Math.min(w - function(d) {return xScale(d)}), d3.event.x));
+            //.attr("x", d.x = Math.max(0, Math.min(w - rangeOfDurationValues) , d3.event.x)); //replaced "width" after minus(-) sign
+        //dragrect
+            //.attr("y", d.y = Math.max(0, Math.min(h - height, d3.event.y)));
+
+        //d3.select(this)
+          //.attr("transform", "translate(" + d3.event.x + "," + d3.event.y + ")");
+
+        d3.select(this)
+            .attr("transform", "translate(" + d3.event.x + ")");
+
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
