@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Piano Roll</title>
+    <script type="text/javascript" src="nexusUI.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js"></script>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script type="text/javascript" src="notesOnlyJSON.js"></script>
+    <script src="Tone.js"></script>
+
+    <style type="text/css">
+        .chart {
+            shape-rendering: crispEdges;
+        }
+
+        .mini text {
+            font: 9px sans-serif;
+        }
+
+        .main text {
+            font: 12px sans-serif;
+        }
+
+        .miniItem0 {
+            fill: darksalmon;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .miniItem1 {
+            fill: darkolivegreen;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2
+        }
+
+        .miniItem2 {
+            fill: slategray;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem3 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem4 {
+            fill: slategray;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem5 {
+            fill: #e94cbb;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem6 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem7 {
+            fill: #2e907f;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem8 {
+            fill: #b077e9;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem9 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem10 {
+            fill: darksalmon;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .miniItem11{
+            fill: darkolivegreen;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2
+        }
+
+        .miniItem12 {
+            fill: #e9e245;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem13 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem14 {
+            fill: #905113;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem15 {
+            fill: #e94cbb;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem16 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem17 {
+            fill: #319043;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem18 {
+            fill: #b077e9;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem19 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem20 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .brush .selection {
+            fill: none;
+        }
+
+        svg {
+            border: solid 1px #aaa;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="option2">
+    <input name="SelectRegion"
+           type="button"
+           value="PlaySelectedRegion"
+           onclick="playSection()" />
+</div>
+
+
+<div id="checks">
+    X-axis:<input type="checkbox" id="xChecked" checked/>
+    Y-axis:<input type="checkbox" id="yChecked" checked/>
+</div>
+
+
+
+
+<script>
+    $('#xChecked').click(function() {
+        isXChecked = !isXChecked;
+        dragbarleft
+            .attr("fill-opacity", (isXChecked ? 0.5 : 0))
+            .attr("cursor", (isXChecked ? "ew-resize" : "move"));
+        dragbarright
+            .attr("fill-opacity", (isXChecked ? 0.5 : 0))
+            .attr("cursor", (isXChecked ? "ew-resize" : "move"));
+    });
+
+    $('#yChecked').click(function() {
+        isYChecked = !isYChecked;
+        drag //previously dragbartop
+            .attr("fill-opacity", (isYChecked ? 0.5 : 0))
+            .attr("cursor", (isYChecked ? "ns-resize" : "move"));
+        dragbarbottom
+            .attr("fill-opacity", (isYChecked ? 0.5 : 0))
+            .attr("cursor", (isYChecked ? "ns-resize" : "move"));
+    });
+</script>
+
+
+
+
+<script type="text/javascript">
+    //data
+
+    var lanes = ["C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5","F5","G5", "A5", "B5"], //21 pitches
+
+
+        laneLength = lanes.length, //21
+        timeBegin = 0,
+        timeEnd = 65.33326800000005;
+
+
+</script>
+<script type="text/javascript">
+    var m = [20, 15, 15, 120], //top right bottom left
+        //m = [20, 5, 15, 120],
+        //w = 960 - m[1] - m[3],
+        w = 1000 - m[1] - m[3],
+        h = 500 - m[0] - m[2],
+        miniHeight = laneLength * 18,  //removed *12 //with *18, this is
+        mainHeight = h - miniHeight - 50;
+    //mainHeight = h - miniHeight;
+
+    //scales
+    var x = d3.scale.linear()
+        .domain([timeBegin, timeEnd+1])
+        .range([0, w]);
+
+    var y2 = d3.scale.linear()
+        .domain([laneLength ,0]) //highest to lowest pitch
+        .range([0, miniHeight]);
+
+    var zoom = d3.behavior.zoom()
+        .scaleExtent([1, 10])
+        .on("zoom", zoomed);
+
+    var xAxis2 = d3.svg.axis().scale(x).orient("bottom"),
+
+
+        drag = d3.behavior.drag()
+            .on("drag", dragmove);
+
+
+    var brush = d3.svg.brush();
+
+    var isXChecked = true,
+        isYChecked = true;
+
+    var dragBarWidth = 3;
+
+
+    var dragBarRight = d3.behavior.drag()
+        .on("drag", rightDragResize);
+
+
+
+
+    chart = d3.select("body")
+        .append("svg")
+        .attr("width", w + m[1] + m[3])
+        .attr("height", h + 500)
+        //.attr("height", h + m[0] + m[2])
+        .attr("class", "chart")
+        .attr('id','mySVG')
+        .call(zoom);
+
+    var mini = chart.append("g")
+        .attr("transform", "translate(" + m[3] + "," + (mainHeight + m[0]) + ")")
+        .attr("width", w)
+        .attr("height", miniHeight)
+        .attr("class", "mini")
+        //.call(zoom)
+        .call(brush.x(x).y(y2).on('brush',notesSelected));
+
+    //mini lanes and texts
+    mini.append("g").selectAll(".laneLines")
+        .data(minimalNotesFinal)
+        .enter().append("line")
+        .attr("x1", 0)
+        .attr("y1", function(d) {return y2(d.lane);}) //I dont like the way the lanes are created based on a Key Call from the object Array
+        .attr("x2", w)
+        .attr("y2", function(d) {return y2(d.lane);})
+        .attr("stroke", "lightgray");
+
+    mini.append("g").selectAll(".laneText")
+        .data(lanes)
+        .enter().append("text")
+        .text(function(d) {return d;})
+        .attr("x", -m[1])
+        .attr("y", function(d, i) {return y2(i + .5);})
+        .attr("dy", ".5ex")
+        .attr("text-anchor", "end")
+        .attr("class", "laneText");
+
+    mini.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + miniHeight + ")")
+        .call(xAxis2);
+
+
+    //mini item rects
+    var dragRect = mini.append("g").selectAll("miniItems")
+        .data(minimalNotesFinal)
+        .enter().append("rect") //"brush"
+        .attr("class", function(d) {return "miniItem" + d.lane;}) //midi
+        .attr("x", function(d) {return x(d.time);}) //time
+        .attr("y", function(d) {return y2(d.lane + .5) - 5;}) //midi
+        .attr("width", function(d) {
+            return x(d.duration);})
+        .attr("height", 10)
+        .on('click', noteClicked)
+        .call(drag);
+
+
+
+    var rightDragHandles = mini.append("g").selectAll("miniItems") //the closest thing to getting drag handles to appear, but does NOT work since it is tied back to miniItems CLASS!!!! how can I not to this?8
+        .data(minimalNotesFinal)
+        .enter().append("rect")
+        .attr("class", function(d) {return "miniItem" + d.lane;}) //midi
+        .attr("x", function(d) { return x(d.time) + x(d.duration) - (dragBarWidth/2); })
+        .attr("y", function(d) { return y2(d.lane + .5) - 5 + (dragBarWidth/2); })
+        .attr("id", "dragright")
+        .attr("height", 10 - dragBarWidth)
+        .attr("width", dragBarWidth)
+        .attr("fill", "lightblue")
+        .attr("fill-opacity", .5)
+        .attr("cursor", "ew-resize")
+        .call(dragBarRight);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var synth = new Tone.FMSynth().toMaster();
+
+    var noteStartTimes = [];
+    var notePitch = [];
+    var noteDuration = [];
+
+    var note;
+
+
+
+    var copyMinimalNotesFinal = deepCopy(minimalNotesFinal);
+
+
+
+
+    function notesSelected() { //this function actually RECOGNIZES notes on the piano roll...
+        note = 0;
+        if(brush.empty()){
+            note = 0;
+        } else{
+            var extent = brush.extent();
+            var x0 = extent[0][0],
+                y0 = extent[0][1],
+                x1 = extent[1][0],
+                y1 = extent[1][1];
+
+
+            copyMinimalNotesFinal.forEach(function (d){
+
+                if(x0 <= d.time && d.time <= x1 && y0 <= d.lane+ .5 && d.lane+ .5 <= y1)
+                    note += 1;
+
+                noteStartTimes.push(d.time);
+                notePitch.push(d.name);
+                noteDuration.push(d.duration);
+
+                noteStartTimes.length = note;
+                notePitch.length = note;
+                noteDuration.length = note;
+
+
+            });
+
+
+
+
+        }
+
+    }
+
+
+
+    //var noteProperties = [];
+    //var notePropertiesSorted = [];
+
+    function playSection() {
+
+
+        console.log("Selected notes" + note);
+
+
+        var noteProperties = [];
+
+        for (i = 0; i <= (note - 1); i++) {
+
+            noteProperties.push({
+
+                "startTime": noteStartTimes[i],
+                "pitch": notePitch[i],
+                "duration": noteDuration[i]
+            });
+
+        }
+
+
+        var notePropertiesSorted = noteProperties.sort(function (a, b) { //could or COULD NOT have "var"
+
+
+            return a["startTime"] - b["startTime"]
+
+        });
+
+        notePropertiesArray = JSON.stringify(notePropertiesSorted); //var or no var
+        console.log("Notes to play: " + notePropertiesArray);
+
+
+        notePropertiesSorted.forEach(function (d) {
+            //d3.select(this);
+            return synth.triggerAttackRelease(d.pitch, d.duration, d.startTime);
+        });
+
+
+    }
+
+
+    function noteClicked(d) {
+        if (d3.event.defaultPrevented) return;
+
+        console.log(d.time);
+        console.log(d.duration);
+        console.log(d.name);
+
+        d3.select(this);
+        synth.triggerAttackRelease(d.name, d.duration)
+
+
+    }
+
+    var startTimeMappedValue;
+    var index;
+    //var copyMinimalNotesFinal;
+
+    function dragmove(d) {
+
+        index = minimalNotesFinal.indexOf(d);  //gives index of note selected
+        //console.log("Index of Selected Note: " + index);
+
+        if(isXChecked) {
+
+            //var index = minimalNotesFinal.indexOf(this);
+            d3.select(this)//could put before or after if statement see which one works better
+
+
+                .attr("x", d.x = Math.max(0, Math.min(w - x(d.duration), d3.event.x)));
+
+
+            var mappingValue = w / timeEnd; //This is constant value
+            startTimeMappedValue = d.x / mappingValue; //this gives us the max startTime based on duration/properties of each note. Each note's startTime is mapped in own unique way
+
+            //console.log(startTimeMappedValue); //we need "modifiedObjectsArray" to access this information as it changes. Or constantly have this information send to the modifiedObjectsArray function
+
+
+
+        }
+
+
+        //LETS HOLD OFF ON MODIFYING PITCH FOR NOW
+
+
+
+        if(isYChecked) {
+
+            d3.select(this)
+
+                .attr("y", d.y = Math.max(0, Math.min(miniHeight -10 , d3.event.y)));//miniHeight
+
+            //console.log(laneHeight);
+
+            //console.log("New Pitch Time: " + d.y);
+        }
+
+
+        var laneHeight = (miniHeight - 10) / laneLength; //1o represents height of rectangle note
+
+        if(d.y < laneHeight){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[20];
+
+            //console.log("MODIFIED PITCH: " + lanes[20]);
+
+        }
+
+        else if (d.y < laneHeight*2) {
+
+            copyMinimalNotesFinal[index]["name"] = lanes[19];
+
+            //console.log("MODIFIED PITCH: " + lanes[19]);
+        }
+
+        else if (d.y < laneHeight*3){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[18];
+
+            //console.log("MODIFIED PITCH: " + lanes[18]);
+        }
+
+        else if (d.y < laneHeight*4){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[17];
+
+            //console.log("MODIFIED PITCH: " + lanes[17]);
+        }
+        else if (d.y < laneHeight*5){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[16];
+
+            //console.log("MODIFIED PITCH: " + lanes[16]);
+        }
+        else if (d.y < laneHeight*6){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[15];
+
+            //console.log("MODIFIED PITCH: " + lanes[15]);
+        }
+        else if (d.y < laneHeight*7){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[14];
+
+            //console.log("MODIFIED PITCH: " + lanes[14]);
+        }
+        else if (d.y < laneHeight*8){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[13];
+
+            //console.log("MODIFIED PITCH: " + lanes[13]);
+        }
+        else if (d.y < laneHeight*9){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[12];
+
+            //console.log("MODIFIED PITCH: " + lanes[12]);
+        }
+        else if (d.y < laneHeight*10){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[11];
+
+            console.log("MODIFIED PITCH: " + lanes[11]);
+        }
+        else if (d.y < laneHeight*11){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[10];
+
+            //console.log("MODIFIED PITCH: " + lanes[10]);
+        }
+        else if (d.y < laneHeight*12){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[9];
+
+            //console.log("MODIFIED PITCH: " + lanes[9]);
+        }
+        else if (d.y < laneHeight*13){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[8];
+
+            //console.log("MODIFIED PITCH: " + lanes[8]);
+        }
+        else if (d.y < laneHeight*14){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[7];
+
+            //console.log("MODIFIED PITCH: " + lanes[7]);
+        }
+        else if (d.y < laneHeight*15){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[6];
+
+            //console.log("MODIFIED PITCH: " + lanes[6]);
+        }
+        else if (d.y < laneHeight*16){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[5];
+
+            //console.log("MODIFIED PITCH: " + lanes[5]);
+        }
+        else if (d.y < laneHeight*17){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[4];
+
+            //console.log("MODIFIED PITCH: " + lanes[4]);
+        }
+        else if (d.y < laneHeight*18){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[3];
+
+            //console.log("MODIFIED PITCH: " + lanes[3]);
+        }
+        else if (d.y < laneHeight*19){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[2];
+
+            //console.log("MODIFIED PITCH: " + lanes[2]);
+        }
+        else if (d.y < laneHeight*20){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[1];
+
+            //console.log("MODIFIED PITCH: " + lanes[1]);
+        }
+        else if (d.y < laneHeight*21){
+
+            copyMinimalNotesFinal[index]["name"] = lanes[0];
+
+
+        }
+
+
+
+        copyMinimalNotesFinal[index]["time"] = startTimeMappedValue;
+
+
+
+    }
+
+    function rightDragResize(d){
+
+        if(isXChecked){
+
+            var dragX = Math.max(x(d.time) + (dragBarWidth/2), Math.min(w+m[1]+m[3], x(d.time)+d.duration+d3.event.dx));
+
+            width = dragX -  x(d.time);
+
+            rightDragHandles
+                .attr("x", function (d) { return dragX - (dragBarWidth/2)
+
+                });
+
+            dragRect.attr("width", width);
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+    /*var dragBarWidth = 3;
+
+
+    var dragBarRight = d3.behavior.drag()
+        .on("drag", rightDragResize);
+
+
+    var rightDragHandles = mini.append("rect")
+        .data(minimalNotesFinal)
+        .attr("x", function(d) { return x(d.time) + x(d.duration) - (dragBarWidth/2); })
+        .attr("y", function(d) { return y2(d.lane + .5) - 5 + (dragBarWidth/2); })
+        .attr("id", "dragright")
+        .attr("height", 10 - dragBarWidth)
+        .attr("width", dragBarWidth)
+        .attr("fill", "lightblue")
+        .attr("fill-opacity", .5)
+        .attr("cursor", "ew-resize")
+        .call(dragBarRight);
+
+    function rightDragResize(d){
+
+        if(isXChecked){
+
+            var dragX = Math.max(x(d.time) + (dragBarWidth/2), Math.min(w+m[1]+m[3], x(d.time)+d.duration+d3.event.dx))
+
+            width = dragX -  x(d.time);
+
+            rightDragHandles
+                .attr("x", function (d) { return dragX - (dragBarWidth/2)
+
+                });
+
+            dragRect.attr("width", width);
+
+
+        }
+
+
+    }
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+    function deepCopy (arr) {
+        var out = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            var item = arr[i];
+            var obj = {};
+            for (var k in item) {
+                obj[k] = item[k];
+            }
+            out.push(obj);
+        }
+        return out;
+    }
+
+
+    function zoomed() {
+
+        mini.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); }
+
+
+
+
+
+</script>
+
+</body>
+</html>

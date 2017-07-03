@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Chronological Diagram of Asia</title>
+    <script type="text/javascript" src="nexusUI.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js"></script>
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script type="text/javascript" src="notesOnlyJSON.js"></script>
+    <script src="Tone.js"></script>
+    <style type="text/css">
+        .chart {
+            shape-rendering: crispEdges;
+        }
+
+        .mini text {
+            font: 9px sans-serif;
+        }
+
+        .main text {
+            font: 12px sans-serif;
+        }
+
+        .miniItem0 {
+            fill: darksalmon;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .miniItem1 {
+            fill: darkolivegreen;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2
+        }
+
+        .miniItem2 {
+            fill: slategray;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem3 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem4 {
+            fill: slategray;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem5 {
+            fill: #e94cbb;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem6 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem7 {
+            fill: #2e907f;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem8 {
+            fill: #b077e9;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem9 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem10 {
+            fill: darksalmon;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .miniItem11{
+            fill: darkolivegreen;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2
+        }
+
+        .miniItem12 {
+            fill: #e9e245;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem13 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem14 {
+            fill: #905113;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem15 {
+            fill: #e94cbb;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem16 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem17 {
+            fill: #319043;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem18 {
+            fill: #b077e9;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem19 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem20 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .brush .selection {
+            fill: none;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div id="option2">
+    <input name="SelectRegion"
+           type="button"
+           value="PlaySelectedRegion"
+           onclick="playSection()" />
+</div>
+
+
+<script type="text/javascript">
+    //data
+    var lanes = ["C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5","F5","G5", "A5", "B5"], //21 pitches
+
+
+        laneLength = lanes.length,
+        timeBegin = 0,
+        timeEnd = 65.33326800000005;
+
+
+</script>
+<script type="text/javascript">
+    var m = [20, 15, 15, 120], //top right bottom left
+        //m = [20, 5, 15, 120],
+        //w = 960 - m[1] - m[3],
+        w = 1000 - m[1] - m[3],
+        h = 500 - m[0] - m[2],
+        miniHeight = laneLength * 18,  //removed *12
+        mainHeight = h - miniHeight - 50;
+
+    //scales
+    var x = d3.scale.linear()
+        .domain([timeBegin, timeEnd+1])
+        .range([0, w]);
+
+    var y2 = d3.scale.linear()
+        .domain([laneLength ,0])
+        .range([0, miniHeight]);
+
+    var zoom = d3.behavior.zoom()
+        .scaleExtent([1, 10])
+        .on("zoom", zoomed);
+
+    var xAxis2 = d3.svg.axis().scale(x).orient("bottom"),
+
+
+        drag = d3.behavior.drag()
+            .on("drag", dragmove);
+
+
+    var brush = d3.svg.brush();
+
+    //brush.on('brushend', bindSelect)
+
+
+    chart = d3.select("body")
+        .append("svg")
+        .attr("width", w + m[1] + m[3])
+        .attr("height", h + m[0] + m[2])
+        .attr("class", "chart")
+        .attr('id','mySVG')
+        .call(zoom);
+
+    var mini = chart.append("g")
+        .attr("transform", "translate(" + m[3] + "," + (mainHeight + m[0]) + ")")
+        .attr("width", w)
+        .attr("height", miniHeight)
+        .attr("class", "mini")
+        .call(brush.x(x).y(y2).on('brush',notesSelected));
+
+    //mini lanes and texts
+    mini.append("g").selectAll(".laneLines")
+        .data(minimalNotesFinal)
+        //.data(notes)
+        .enter().append("line")
+        .attr("x1", 0)
+        .attr("y1", function(d) {return y2(d.lane);})
+        .attr("x2", w)
+        .attr("y2", function(d) {return y2(d.lane);})
+        .attr("stroke", "lightgray");
+
+    mini.append("g").selectAll(".laneText")
+        .data(lanes)
+        .enter().append("text")
+        .text(function(d) {return d;})
+        .attr("x", -m[1])
+        .attr("y", function(d, i) {return y2(i + .5);})
+        .attr("dy", ".5ex")
+        .attr("text-anchor", "end")
+        .attr("class", "laneText");
+
+    mini.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + miniHeight + ")")
+        .call(xAxis2);
+
+
+    //mini item rects soon to be brushes
+    mini.append("g").selectAll("miniItems")
+        .data(minimalNotesFinal)
+        .enter().append("rect") //"brush"
+        .attr("class", function(d) {return "miniItem" + d.lane;}) //midi
+        .attr("x", function(d) {return x(d.time);}) //time
+        .attr("y", function(d) {return y2(d.lane + .5) - 5;}) //midi
+        .attr("width", function(d) {
+            return x(d.duration);})
+        .attr("height", 10)
+        .on('click', noteClicked)
+        .call(drag);
+
+    var synth = new Tone.FMSynth().toMaster();
+
+    var noteStartTimes = [];
+    var notePitch = [];
+    var noteDuration = [];
+
+    var note;
+
+    function notesSelected() {
+        note = 0;
+        if(brush.empty()){
+            note = 0;
+        } else{
+            var extent = brush.extent();
+            var x0 = extent[0][0],
+                y0 = extent[0][1],
+                x1 = extent[1][0],
+                y1 = extent[1][1];
+
+
+            minimalNotesFinal.forEach(function (d){
+
+                if(x0 <= d.time && d.time <= x1 && y0 <= d.lane+ .5 && d.lane+ .5 <= y1)
+                    note += 1;
+
+                noteStartTimes.push(d.time);
+                notePitch.push(d.name);
+                noteDuration.push(d.duration);
+
+                noteStartTimes.length = note;
+                notePitch.length = note;
+                noteDuration.length = note;
+
+
+            });
+
+
+        }
+
+    }
+
+    //var noteProperties = [];
+    //var notePropertiesSorted = [];
+
+    function playSection() {
+
+
+        console.log("Selected notes" + note);
+
+
+        var noteProperties = [];
+
+        for (i = 0; i <= (note - 1); i++) {
+
+            noteProperties.push({
+
+                "startTime": noteStartTimes[i],
+                "pitch": notePitch[i],
+                "duration": noteDuration[i]
+            });
+
+        }
+
+        notePropertiesSorted = [];
+        notePropertiesSorted = noteProperties.sort(function (a, b) {
+
+
+            return a["startTime"] - b["startTime"]
+
+        });
+
+        notePropertiesArray = JSON.stringify(notePropertiesSorted); //var or no var
+        console.log("Notes to play: " + notePropertiesArray);
+
+        //for (var i = 0; i <= (note - 1); i++) {
+
+        //synth.triggerAttackRelease(notePropertiesSorted[i]["pitch"],notePropertiesSorted[i]["duration"],notePropertiesSorted[i]["startTime"])
+
+        notePropertiesSorted.forEach(function (d) {
+            //d3.select(this);
+            return synth.triggerAttackRelease(d.pitch, d.duration, d.startTime);
+        });
+
+        //notePropertiesArray = JSON.stringify(notePropertiesSorted); //var or no var
+        //console.log("Notes to play: " + notePropertiesArray);
+
+        //}
+    }
+
+
+    function noteClicked(d) {
+        if (d3.event.defaultPrevented) return;
+
+        console.log(d.time);
+        console.log(d.duration);
+        console.log(d.name);
+
+        d3.select(this);
+        synth.triggerAttackRelease(d.name, d.duration)
+
+
+    }
+
+
+
+    function dragmove(d) {
+
+        //if(isXChecked) {
+
+            d3.select(this)
+
+
+            //.attr("x", d.x = Math.max(0, d3.event.x));
+                .attr("x", d.x = Math.max(0, Math.min(w - x(d.duration), d3.event.x)));
+            //.attr("x", d.x = Math.max(0, Math.min(w, d3.event.x)));
+
+            console.log("New Start Time: " + d.x);
+        //}
+
+        //if(isYChecked){
+
+            //d3.select(this)
+
+
+                //.attr("y", d.y = Math.max(0, Math.min(miniHeight, d3.event.y))); //Review this dragging options (it could just be a keyboard action that shifts pitch rather than dragging)
+
+           //console.log("New Pitch: " + d.y); //if you do decide to go with DRAG, then you can have code that determines pitch depending on the y-position of the note, since each lane has a set region and y-coord. position
+        //}
+
+
+    }
+
+    function zoomed() {
+        mini.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); }
+
+
+
+
+
+</script>
+
+</body>
+</html>
