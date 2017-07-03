@@ -278,9 +278,12 @@
         notesSelected.push(d.name[i], d.duration[i]);
         console.log(notesSelected);
     }*/
+
+    var synth = new Tone.FMSynth().toMaster();
+
     function notesSelected() {
         if (d3.event.defaultPrevented) return; // dragged
-        var synth = new Tone.FMSynth().toMaster();
+        // var synth = new Tone.FMSynth().toMaster();
 
         d3.select(this);
         synth.triggerAttackRelease(function(d,i){
@@ -291,7 +294,7 @@
 
     function noteClicked(d, i) { //
         if (d3.event.defaultPrevented) return; // dragged
-        var synth = new Tone.FMSynth().toMaster();
+
 
         d3.select(this);
         synth.triggerAttackRelease(d.name, d.duration)
