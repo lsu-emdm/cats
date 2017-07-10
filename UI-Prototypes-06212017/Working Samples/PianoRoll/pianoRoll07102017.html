@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Piano Roll</title>
+    <script type="text/javascript" src="nexusUI.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js"></script>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script type="text/javascript" src="notesOnlyJSON.js"></script>
+    <script src="Tone.js"></script>
+
+    <style type="text/css">
+        .chart {
+            shape-rendering: crispEdges;
+        }-->
+
+        .mini text {
+            font: 9px sans-serif;
+        }
+
+        .main text {
+            font: 12px sans-serif;
+        }
+
+        .rect1 text{
+
+            font: 9px sans-serif;
+            fill: none;
+            stroke: black;
+
+        }
+
+        .miniItem0 {
+            fill: darksalmon;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .miniItem1 {
+            fill: darkolivegreen;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2
+        }
+
+        .miniItem2 {
+            fill: slategray;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem3 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem4 {
+            fill: slategray;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem5 {
+            fill: #e94cbb;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem6 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem7 {
+            fill: #2e907f;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem8 {
+            fill: #b077e9;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem9 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem10 {
+            fill: darksalmon;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .miniItem11{
+            fill: darkolivegreen;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2
+        }
+
+        .miniItem12 {
+            fill: #e9e245;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem13 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem14 {
+            fill: #905113;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem15 {
+            fill: #e94cbb;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem16 {
+            fill: #59e95e;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem17 {
+            fill: #319043;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem18 {
+            fill: #b077e9;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem19 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .miniItem20 {
+            fill: #64326b;
+            fill-opacity: .7;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .brush .selection {
+            fill: none;
+
+        }
+
+
+        svg {
+            border: solid 1px #aaa;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+<!--<canvas nx="waveform" style="width:846px;height:100px;display:block;margin:100px auto 0px"/>-->
+<div id="saveModificationsButton">
+    <input name="SaveModification"
+           type="button"
+           value="SaveModifications"
+           onclick="saveFinalModifications()" />
+</div>
+
+<div id="option2">
+    <input name="SelectRegion"
+           type="button"
+           value="PlaySelectedRegion"
+           onclick="playSection()" />
+</div>
+
+<div id="checks">
+    X-axis:<input type="checkbox" id="xChecked" checked/>
+    Y-axis:<input type="checkbox" id="yChecked" checked/>
+</div>
+
+<div id="phraseOption">
+    <input name="SelectPhrase"
+           type="button"
+           value="GeneratePhrase"
+           onclick="generatePhrase()" />
+</div>
+
+<div id="finalOption">
+    <input name="SelectRegion"
+           type="button"
+           value="GenerateNote"
+           onclick="generateNote()" />
+</div>
+
+<form class = "Form1" name="myform" onSubmit="return handleClick()" >
+    <input name="Submit"  type="submit" value="New Note Start Time" >
+    <input type="text" id="myVal" placeholder="New Note Start Time&hellip;">
+
+
+</form>
+
+<form name="myform" onSubmit="return handleClick1()">
+
+    <input name="Submit"  type="submit" value="New Note Pitch" >
+    <input type="text" id="myVal1" placeholder="New Note Pitch&hellip;">
+
+</form>
+
+<form name="myform" onSubmit="return handleClick2()">
+
+
+    <input name="Submit"  type="submit" value="New Note Duration" >
+    <input type="text" id="myVal2" placeholder="New Note Duration&hellip;">
+</form>
+
+<form name="myform" onSubmit="return handleClick3()">
+
+
+    <input name="Submit"  type="submit" value="New Note Lane" >
+    <input type="text" id="myVal3" placeholder="Note Lane&hellip;">
+</form>
+
+<form name="myform" onSubmit="return handleClick4()">
+
+
+    <input name="Submit"  type="submit" value="New Phrase" >
+    <input type="text" id="myPhrase" placeholder="Note Phrase&hellip;">
+</form>
+
+<ul></ul>
+
+
+<script>
+    $('#xChecked').click(function() {
+        isXChecked = !isXChecked;
+        dragbarleft
+            .attr("fill-opacity", (isXChecked ? 0.5 : 0))
+            .attr("cursor", (isXChecked ? "ew-resize" : "move"));
+        dragbarright
+            .attr("fill-opacity", (isXChecked ? 0.5 : 0))
+            .attr("cursor", (isXChecked ? "ew-resize" : "move"));
+    });
+
+    $('#yChecked').click(function() {
+        isYChecked = !isYChecked;
+        drag //previously dragbartop
+            .attr("fill-opacity", (isYChecked ? 0.5 : 0))
+            .attr("cursor", (isYChecked ? "ns-resize" : "move"));
+        dragbarbottom
+            .attr("fill-opacity", (isYChecked ? 0.5 : 0))
+            .attr("cursor", (isYChecked ? "ns-resize" : "move"));
+    });
+</script>
+
+
+
+
+<script type="text/javascript">
+    //data
+
+    var noteLength = notes.length;
+    //console.log(noteLength[285]);
+    var lastNoteIndex = noteLength-1;
+
+    var lastNoteStartTime = notes[lastNoteIndex]["time"];
+    var lastNoteDurationTime = notes[lastNoteIndex]["duration"];
+    var timeEndConsole = lastNoteStartTime + lastNoteDurationTime;
+    //console.log(timeEndConsole);
+
+    var lanes = ["C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5","F5","G5", "A5", "B5"], //21 pitches
+
+
+        laneLength = lanes.length, //21
+        timeBegin = 0,
+        //timeEnd = lastNoteStartTime + lastNoteDurationTime;
+        timeEnd = timeEndConsole;
+
+
+</script>
+<script type="text/javascript">
+    var m = [20, 15, 15, 120], //top right bottom left
+        //m = [20, 5, 15, 120],
+        //w = 960 - m[1] - m[3],
+        w = 1000 - m[1] - m[3],
+        h = 500 - m[0] - m[2],
+        miniHeight = laneLength * 18,  //removed *12 //with *18, this is
+        mainHeight = h - miniHeight - 50;
+    //mainHeight = h - miniHeight;
+
+    //scales
+    var x = d3.scale.linear()
+        .domain([timeBegin, timeEnd+1])
+        .range([0, w]);
+
+    var y2 = d3.scale.linear()
+        .domain([laneLength ,0]) //highest to lowest pitch
+        .range([0, miniHeight]);
+
+    var zoom = d3.behavior.zoom()
+        .scaleExtent([1, 10])
+        .on("zoom", zoomed);
+
+    var xAxis2 = d3.svg.axis().scale(x).orient("bottom"),
+
+
+        drag = d3.behavior.drag()
+            .on("drag", dragmove);
+
+
+    var brush = d3.svg.brush();
+
+    var isXChecked = true,
+        isYChecked = true;
+
+
+
+    var chart = d3.select("body")
+        .append("svg")
+        .attr("width", w + m[1] + m[3]+400)
+        .attr("height", h + 500)
+        //.attr("height", h + m[0] + m[2])
+        .attr("class", "chart")
+        .attr('id','mySVG')
+        .call(zoom);
+
+
+    var mini = chart.append("g")
+        .attr("transform", "translate(" + m[3] + "," + (m[0]) + ")") //formerly had "mainHeight +"
+        .attr("width", w)
+        .attr("height", miniHeight)
+        .attr("class", "mini")
+        .call(brush.x(x).y(y2).on('brush',notesSelected));
+
+    //mini.append("g").append(waveformFinal);
+    // mainBody.appendChild(waveformFinal)
+
+    //mini lanes and texts
+    mini.append("g").selectAll(".laneLines")
+        .data(minimalNotesFinal)
+        .enter().append("line")
+        .attr("x1", 0)
+        .attr("y1", function(d) {return y2(d.lane);}) //I dont like the way the lanes are created based on a Key Call from the object Array
+        .attr("x2", w)
+        .attr("y2", function(d) {return y2(d.lane);})
+        .attr("stroke", "lightgray");
+
+    mini.append("g").selectAll(".laneText")
+        .data(lanes)
+        .enter().append("text")
+        .text(function(d) {return d;})
+        .attr("x", -m[1])
+        .attr("y", function(d, i) {return y2(i + .5);})
+        .attr("dy", ".5ex")
+        .attr("text-anchor", "end")
+        .attr("class", "laneText");
+
+    mini.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + miniHeight + ")")
+        .call(xAxis2);
+
+
+    //mini item rects
+    mini.append("g").selectAll("miniItems")
+        .data(minimalNotesFinal)
+        //.data(minimalNotesFinalDelete)
+        .enter().append("rect") //"brush"
+        .attr("class", function(d) {return "miniItem" + d.lane;}) //midi
+        .attr("x", function(d) {return x(d.time);}) //time
+        .attr("y", function(d) {return y2(d.lane + .5) - 5;}) //midi
+        .attr("width", function(d) {
+            return x(d.duration);})
+        .attr("height", 10)
+        .on('click', noteClicked)
+        .call(drag);
+
+
+
+    var dataset = [];
+    //var datasetNewNote = [];
+    var newStartTime;
+    var newPitch;
+    var newDuration;
+    var newLane;
+
+
+    function handleClick(event){
+        newStartTime = document.getElementById("myVal").value;
+
+        dataset[0] =  Number(newStartTime);
+
+
+
+        return false;
+    }
+
+    function handleClick1(event){
+        newPitch = document.getElementById("myVal1").value;
+        dataset[1] =  newPitch;
+
+
+        return false;
+    }
+
+    function handleClick2(event){
+        newDuration = document.getElementById("myVal2").value;
+        dataset[2] =  Number(newDuration);
+
+
+        return false;
+    }
+
+    function handleClick3(event){
+        newLane = document.getElementById("myVal3").value;
+        dataset[3] =  Number(newLane);
+
+
+        return false;
+    }
+
+    function handleClick4(event){
+        newPhrase = document.getElementById("myPhrase").value;
+        dataset[4] =  newPhrase;
+
+
+        return false;
+    }
+
+
+    function generatePhrase(){
+        var newPhrase = [];
+
+        newPhrase.push({
+
+            "time": dataset[0],
+            "name": dataset[1], //not really necessary
+            "duration": dataset[2],
+            "lane": dataset[3],
+            "phrase": dataset[4] //index 4 contains phrase string
+
+
+        });
+
+        newPhraseArray = JSON.stringify(newPhrase);
+        console.log(newPhraseArray);
+
+        mini.append("g").selectAll("mini")
+            .data(newPhrase)
+            .enter().append("text")
+            .text(function(d){return d.phrase;})
+
+            .attr("class", function (d) {  //this is the attribute we are testing/wary of
+                return "mini" + d.lane;
+            }) //midi
+            .attr("x", function (d) {
+                return x(d.time);
+            }) //time
+            .attr("y", function (d) {
+                return y2(d.lane + .5) - 5;
+            }) //midi
+            .attr("dy", "1ex")
+            .attr("text-anchor", "start")
+            .on('click', noteClicked) //is this necessary/even going to work????
+            .call(drag);
+
+
+
+
+    }
+
+
+    function generateNote() {
+
+        var datasetNewNote = []; //since this is not global, only one object will be stored in this array. any old notes created will be forgotten/most updated generated note will fo here
+
+        datasetNewNote.push({
+
+            "time": dataset[0],
+            "name": dataset[1],
+            "duration": dataset[2],
+            "lane": dataset[3]
+        });
+
+
+        datasetNewNoteArray = JSON.stringify(datasetNewNote);
+        console.log(datasetNewNoteArray);
+
+        mini.append("g").selectAll("miniItems")
+            .data(datasetNewNote)
+            .enter().append("rect") //"brush"
+            .attr("class", function (d) {
+                return "miniItem" + d.lane;
+            }) //midi
+            .attr("x", function (d) {
+                return x(d.time);
+            }) //time
+            .attr("y", function (d) {
+                return y2(d.lane + .5) - 5;
+            }) //midi
+            .attr("width", function (d) {
+                return x(d.duration);
+            })
+            .attr("height", 10)
+            .on('click', noteClicked)
+            .call(drag);
+
+
+        minimalNotesFinal.push(datasetNewNote[0]);
+
+
+    }
+
+
+
+    var synth = new Tone.FMSynth().toMaster();
+
+    var noteStartTimes = [];
+    var notePitch = [];
+    var noteDuration = [];
+
+    var note;
+
+
+
+    function notesSelected() { //this function actually RECOGNIZES notes on the piano roll...
+        note = 0; //the number of notes selected
+        if(brush.empty()){
+            note = 0;
+        } else{
+            var extent = brush.extent();
+            var x0 = extent[0][0],
+                y0 = extent[0][1],
+                x1 = extent[1][0],
+                y1 = extent[1][1];
+
+
+
+
+            minimalNotesFinal.forEach(function (d){ //pushes values from the copy of the original Array of Objects(minimalNotesFinal).
+
+
+                if(x0 <= d.time && d.time <= x1 && y0 <= d.lane+ .5 && d.lane+ .5 <= y1)
+                    note += 1;
+
+                noteStartTimes.push(d.time);
+                notePitch.push(d.name);
+                noteDuration.push(d.duration);
+
+
+                noteStartTimes.length = note;
+                notePitch.length = note;
+                noteDuration.length = note;
+
+
+
+            });
+
+        }
+    }
+
+    //This was inspired by looking at ToneJS Document Player
+
+    var player = new Tone.Player("star_spangled_banner_usa_national_anthem_marching_band_youtube.mp3").toMaster();
+
+    Tone.Buffer.on('load', function() {
+        document.getElementById('option2').onclick = function () {
+            //player.start(0, 30, 10);
+            player.volume.value = -10;
+            player.start(0, firstNoteStartTime, totalDuration);
+
+        }
+
+    });
+
+
+    var phraseResult1 = [];
+    var phraseResult2 = [];
+    var phraseResult3 = [];
+    var phraseResult4 = [];
+    var phraseResult5 = [];
+    var phraseResult6 = [];
+
+
+    var notePropertiesSortedLength;
+    var firstNoteStartTime;
+    var lastNoteSortedIndex;
+    var lastNoteSortedStartTime;
+    var lastNoteSortedDurationTime;
+    var lastNoteEndTime;
+
+    var totalDuration;
+
+
+    function playSection() { //creates a new array of objects only for the SELECTED notes
+
+
+
+        console.log("Selected notes" + note);
+
+
+        var noteProperties = [];
+
+        for (i = 0; i <= (note - 1); i++) {
+
+            noteProperties.push({
+
+                "startTime": noteStartTimes[i],
+                "pitch": notePitch[i],
+                "duration": noteDuration[i]
+            });
+
+        }
+
+
+
+        addEventListener("keydown", function(event){
+            //var selection;
+
+            if (event.defaultPrevented) {
+                return; // Do nothing if the event was already processed
+            }
+
+            switch (event.key) {
+
+                case "Tab":
+
+                    phraseResult1 = noteProperties.map(function (el) {
+                        var specificPhrase = Object.assign({}, el);
+                        specificPhrase.phrase = "Oh say can you see";
+                        return specificPhrase;
+
+                    });
+
+                    var phraseResultConsole1 = JSON.stringify(phraseResult1);
+                    console.log(phraseResultConsole1);
+
+
+
+                    break;
+
+
+                case "q":
+
+                    phraseResult2 = noteProperties.map(function (el) {
+                        var specificPhrase = Object.assign({}, el);
+                        specificPhrase.phrase = "At the twilights last gleaming";
+                        return specificPhrase;
+
+                    });
+
+                    var phraseResultConsole2= JSON.stringify(phraseResult2);
+                    console.log(phraseResultConsole2);
+                    break;
+
+                case "w":
+
+                    phraseResult3 = noteProperties.map(function (el) {
+                        var specificPhrase = Object.assign({}, el);
+                        specificPhrase.phrase = "Whose broad stripes and broad stars";
+                        return specificPhrase;
+
+                    });
+
+                    var phraseResultConsole3 = JSON.stringify(phraseResult3);
+                    console.log(phraseResultConsole3);
+                    break;
+
+                case "e":
+
+                    phraseResult4 = noteProperties.map(function (el) {
+                        var specificPhrase = Object.assign({}, el);
+                        specificPhrase.phrase = "and the rockets red glare";
+                        return specificPhrase;
+
+                    });
+
+                    var phraseResultConsole4 = JSON.stringify(phraseResult4);
+                    console.log(phraseResultConsole4);
+                    break;
+
+                case "r":
+
+                    phraseResult5 = noteProperties.map(function (el) {
+                        var specificPhrase = Object.assign({}, el);
+                        specificPhrase.phrase = "gave proof through the night";
+                        return specificPhrase;
+
+                    });
+
+                    var phraseResultConsole5 = JSON.stringify(phraseResult5);
+                    console.log(phraseResultConsole5);
+                    break;
+
+                case "t":
+
+                    phraseResult6 = noteProperties.map(function (el) {
+                        var specificPhrase = Object.assign({}, el);
+                        specificPhrase.phrase = "for the land of the free and the home of the brave";
+                        return specificPhrase;
+
+                    });
+
+                    var phraseResultConsole6 = JSON.stringify(phraseResult6);
+                    console.log(phraseResultConsole6);
+                    break;
+
+            }
+
+        });
+
+
+        notePropertiesSorted = noteProperties.sort(function (a, b) { //could or COULD NOT have "var"
+
+
+            return a["startTime"] - b["startTime"] //the new array of objects is sorted by start time so playback of notes is in ORDER
+
+        });
+
+        notePropertiesSortedLength = notePropertiesSorted.length;
+        firstNoteStartTime = notePropertiesSorted[0]["startTime"];
+
+        lastNoteSortedIndex = notePropertiesSortedLength -1;
+        lastNoteSortedStartTime = notePropertiesSorted[lastNoteSortedIndex]["startTime"];
+        lastNoteSortedDurationTime = notePropertiesSorted[lastNoteSortedIndex]["duration"];
+        lastNoteEndTime = lastNoteSortedStartTime + lastNoteSortedDurationTime;
+        totalDuration = lastNoteEndTime - firstNoteStartTime;
+
+        /////////////////////
+        console.log(firstNoteStartTime);
+        console.log(totalDuration);
+        ///////////////////////
+
+
+        notePropertiesSorted.forEach(function (d) { //PLAYSBACK THE SELECTED ARRAY OF NOTES/OBJECTS. DOES NOT WORK CONSISTENTLY
+
+            return synth.triggerAttackRelease(d.pitch, d.duration, d.startTime);
+            //return synth.start(d.pitch, d.duration, d.startTime);
+
+        });
+
+
+
+        var notePropertiesArray = JSON.stringify(notePropertiesSorted); //var or no var
+        console.log("Notes to play: " + notePropertiesArray); //LOGS THE ORDERED ARRAY OF SELECTED NOTES/OBJECTS
+
+    }
+
+
+    var catPlayer = new Tone.Player("CatMeow2.wav").toMaster();
+        //var catPlayer = new Tone.Sampler("CatMeow2.wav").toMaster();
+
+
+            Tone.Buffer.on('load', function() {
+
+               
+                    catPlayer.volume.value = 0;
+                    catPlayer.start(0, 0, 5); //figure out how to change velocity of catSound mp3 so that the cat Sound lasts the entire note
+
+
+
+                    //catPlayer.volume.value = 0;
+                    //catPlayer.start(0, 0, 5); //figure out how to change velocity of catSound mp3 so that the cat Sound lasts the entire note
+
+        });
+
+
+
+    var selection; //making selection variable global applies DELETION OF NOTE TO SPECIFICALLY SELECTED NOTE ONLY
+    var durationValue;
+    var newDurationValue;
+    var index;
+
+
+    function noteClicked(d) {
+
+        if (d3.event.defaultPrevented) return;
+
+
+
+        //Original
+        index = minimalNotesFinal.indexOf(d);
+        console.log("Selected Note: " + index);
+
+
+        console.log(d.time);
+        console.log(d.duration);
+        console.log(d.name);
+
+
+        selection = d3.select(this); //it seems like it stores every note that is clicked since the delete button deletes multiple notes that were clicked
+
+        addEventListener("keydown", function(event){
+            //var selection;
+
+            if (event.defaultPrevented) {
+                return; // Do nothing if the event was already processed
+            }
+
+            switch (event.key) {
+
+                case "Delete":
+
+                    selection.remove();
+                    //gives index of note selected
+                    //console.log("Index of Deleted Note: " + index);
+
+                    minimalNotesFinal.splice(index,1);//need to account for change in index range- sometimes works well, but eventually seems to bug out(delete multiple at once in the data, but NOT VISUALLY
+                    console.log("Index of Deleted Note: " + index); //why is previous index defined as "-1" sometimes, depending on the order certain notes are deleted?
+
+
+                    break;
+
+                case "Enter":
+
+                    synth.triggerAttackRelease(d.name, d.duration);
+
+
+                    break;
+
+                case "ArrowRight": //l stands for longer
+
+
+                    durationValue = minimalNotesFinal[index]["duration"];
+                    //console.log(durationValue);
+                    newDurationValue = durationValue + .1; //return durationValue++;
+                    minimalNotesFinal[index]["duration"] = newDurationValue;
+                    console.log(newDurationValue);
+                    var durationModifiedObject1 = JSON.stringify(minimalNotesFinal[index]);
+                    console.log(durationModifiedObject1);
+
+                    selection.attr("width", x(newDurationValue));
+
+
+
+                    break;
+
+                case "ArrowLeft": //s stands for smaller
+
+                    durationValue = minimalNotesFinal[index]["duration"];
+                    //console.log(durationValue);
+                    newDurationValue = durationValue - .1; //return durationValue++;
+                    minimalNotesFinal[index]["duration"] = newDurationValue;
+                    console.log(newDurationValue);
+                    var durationModifiedObject = JSON.stringify(minimalNotesFinal[index]);
+                    console.log(durationModifiedObject);
+
+                    selection.attr("width", x(newDurationValue));
+
+
+                    break;
+
+                case "c":
+
+
+
+                    break;
+
+
+            }
+
+
+        });
+
+
+    }
+
+    var startTimeMappedValue;
+
+
+    function dragmove(d) {
+
+        index = minimalNotesFinal.indexOf(d);  //gives index of note selected
+        console.log("Index of Selected Note: " + index);
+
+        if(isXChecked) {
+
+
+            d3.select(this)//could put before or after if statement see which one works better
+
+
+                .attr("x", d.x = Math.max(0, Math.min(w - x(d.duration), d3.event.x)));
+
+
+            var mappingValue = w / timeEnd; //This is constant value
+            startTimeMappedValue = d.x / mappingValue; //this gives us the max startTime based on duration/properties of each note. Each note's startTime is mapped in own unique way
+
+
+
+        }
+
+
+        //LETS HOLD OFF ON MODIFYING PITCH FOR NOW
+
+
+        if(isYChecked) {
+
+            d3.select(this)
+
+                .attr("y", d.y = Math.max(0, Math.min(miniHeight -10 , d3.event.y)));//miniHeight
+
+        }
+
+
+        var laneHeight = (miniHeight - 10) / laneLength; //1o represents height of rectangle note
+
+        if(d.y < laneHeight){
+
+            minimalNotesFinal[index]["name"] = lanes[20];
+
+            console.log("MODIFIED PITCH: " + lanes[20]);
+
+
+        }
+
+        else if (d.y < laneHeight*2) {
+
+            minimalNotesFinal[index]["name"] = lanes[19];
+
+            console.log("MODIFIED PITCH: " + lanes[19]);
+
+
+        }
+
+        else if (d.y < laneHeight*3){
+
+            minimalNotesFinal[index]["name"] = lanes[18];
+
+            console.log("MODIFIED PITCH: " + lanes[18]);
+
+
+        }
+
+        else if (d.y < laneHeight*4){
+
+            minimalNotesFinal[index]["name"] = lanes[17];
+
+            console.log("MODIFIED PITCH: " + lanes[17]);
+
+        }
+        else if (d.y < laneHeight*5){
+
+            minimalNotesFinal[index]["name"] = lanes[16];
+
+            console.log("MODIFIED PITCH: " + lanes[16]);
+
+
+        }
+        else if (d.y < laneHeight*6){
+
+            minimalNotesFinal[index]["name"] = lanes[15];
+
+            console.log("MODIFIED PITCH: " + lanes[15]);
+
+
+        }
+        else if (d.y < laneHeight*7){
+
+            minimalNotesFinal[index]["name"] = lanes[14];
+
+            console.log("MODIFIED PITCH: " + lanes[14]);
+
+
+        }
+        else if (d.y < laneHeight*8){
+
+            minimalNotesFinal[index]["name"] = lanes[13];
+
+            console.log("MODIFIED PITCH: " + lanes[13]);
+
+
+        }
+        else if (d.y < laneHeight*9){
+
+            minimalNotesFinal[index]["name"] = lanes[12];
+            console.log("MODIFIED PITCH: " + lanes[12]);
+
+
+        }
+        else if (d.y < laneHeight*10){
+
+            minimalNotesFinal[index]["name"] = lanes[11];
+            console.log("MODIFIED PITCH: " + lanes[11]);
+
+
+        }
+        else if (d.y < laneHeight*11){
+
+            minimalNotesFinal[index]["name"] = lanes[10];
+            console.log("MODIFIED PITCH: " + lanes[10]);
+
+        }
+        else if (d.y < laneHeight*12){
+
+            minimalNotesFinal[index]["name"] = lanes[9];
+            console.log("MODIFIED PITCH: " + lanes[9]);
+
+
+        }
+        else if (d.y < laneHeight*13){
+
+            minimalNotesFinal[index]["name"] = lanes[8];
+            console.log("MODIFIED PITCH: " + lanes[8]);
+
+
+        }
+        else if (d.y < laneHeight*14){
+
+            minimalNotesFinal[index]["name"] = lanes[7];
+            console.log("MODIFIED PITCH: " + lanes[7]);
+
+
+        }
+        else if (d.y < laneHeight*15){
+
+            minimalNotesFinal[index]["name"] = lanes[6];
+            console.log("MODIFIED PITCH: " + lanes[6]);
+
+
+        }
+        else if (d.y < laneHeight*16){
+
+            minimalNotesFinal[index]["name"] = lanes[5];
+            console.log("MODIFIED PITCH: " + lanes[5]);
+
+
+        }
+        else if (d.y < laneHeight*17){
+
+            minimalNotesFinal[index]["name"] = lanes[4];
+            console.log("MODIFIED PITCH: " + lanes[4]);
+
+
+        }
+        else if (d.y < laneHeight*18){
+
+            minimalNotesFinal[index]["name"] = lanes[3];
+            console.log("MODIFIED PITCH: " + lanes[3]);
+
+
+        }
+        else if (d.y < laneHeight*19){
+
+            minimalNotesFinal[index]["name"] = lanes[2];
+            console.log("MODIFIED PITCH: " + lanes[2]);
+
+
+        }
+        else if (d.y < laneHeight*20){
+
+            minimalNotesFinal[index]["name"] = lanes[1];
+            console.log("MODIFIED PITCH: " + lanes[1]);
+
+
+        }
+        else if (d.y < laneHeight*21){
+
+            minimalNotesFinal[index]["name"] = lanes[0];
+            console.log("MODIFIED PITCH: " + lanes[0]);
+
+
+        }
+
+
+
+        minimalNotesFinal[index]["time"] = startTimeMappedValue;
+
+    }
+
+    function zoomed() {
+
+        mini.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); }
+
+
+    function saveFinalModifications() {
+
+        var copyMinimalNotesFinal = deepCopy(minimalNotesFinal);
+        JSON.stringify(copyMinimalNotesFinal);
+        console.log(copyMinimalNotesFinal);
+
+    }
+
+    function deepCopy (arr) {
+        var out = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            var item = arr[i];
+            var obj = {};
+            for (var k in item) {
+                obj[k] = item[k];
+            }
+            out.push(obj);
+        }
+        return out;
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
