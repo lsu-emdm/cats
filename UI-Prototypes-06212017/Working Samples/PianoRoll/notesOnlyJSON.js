@@ -2034,6 +2034,12 @@ minimalNotes21 = [];
 
 minimalNotesFinal = [];
 
+// minimalNotesFinal = notes.map(function(el){
+//     var addKey = Object.assign({}, el);
+//     	addKey.lane = el.midi;
+//     return addKey;
+// });
+
 
 minimalNotes1 = notes.filter(function (el){
     return el.name == "C3";
@@ -2271,6 +2277,10 @@ var minimalNotes15Final = minimalNotes15.map(function(el){
                             return addKey;
                         });
 ///
+
+
+
+// minimalNotes[1], minimalNotes[2]
 
 
 
