@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Piano Roll</title>
+    <script type="text/javascript" src="nexusUI.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js"></script>
+    <!--<script type="text/javascript" src="JSONToArrayOfObjects.js"></script>-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" type="text/css" href="noteStyleProperties.css">
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <!--<script type="text/javascript" src="notesOnlyJSONCopy1.js"></script>-->
+    <script type="text/javascript" src="notesJSON2.js"></script>
+    <script src="Tone.js"></script>
+
+
+</head>
+<body>
+
+
+<input type='file' onchange="accessJSONFile()"><br>
+
+
+<!--<canvas nx="waveform" style="width:846px;height:100px;display:block;margin:100px auto 0px"/>-->
+<div id="saveModificationsButton">
+    <input name="SaveModification"
+           type="button"
+           value="SaveModifications"
+           onclick="saveFinalModifications()" />
+</div>
+
+<div id="option2">
+    <input name="SelectRegion"
+           type="button"
+           value="PlaySelectedRegion"
+           onclick="playSection()" />
+</div>
+
+<div id="checks">
+    X-axis:<input type="checkbox" id="xChecked" checked/>
+    Y-axis:<input type="checkbox" id="yChecked" checked/>
+</div>
+
+<div id="phraseOption">
+    <input name="SelectPhrase"
+           type="button"
+           value="GeneratePhrase"
+           onclick="generatePhrase()" />
+</div>
+
+<div id="finalOption">
+    <input name="SelectRegion"
+           type="button"
+           value="GenerateNote"
+           onclick="generateNote()" />
+</div>
+
+<form class = "Form1" name="myform" onSubmit="return handleClick()" >
+    <input name="Submit"  type="submit" value="New Note Start Time" >
+    <input type="text" id="myVal" placeholder="New Note Start Time&hellip;">
+
+
+</form>
+
+<form name="myform" onSubmit="return handleClick1()">
+
+    <input name="Submit"  type="submit" value="New Note Pitch" >
+    <input type="text" id="myVal1" placeholder="New Note Pitch&hellip;">
+
+</form>
+
+<form name="myform" onSubmit="return handleClick2()">
+
+
+    <input name="Submit"  type="submit" value="New Note Duration" >
+    <input type="text" id="myVal2" placeholder="New Note Duration&hellip;">
+</form>
+
+<form name="myform" onSubmit="return handleClick3()">
+
+
+    <input name="Submit"  type="submit" value="New Note Lane" >
+    <input type="text" id="myVal3" placeholder="Note Lane&hellip;">
+</form>
+
+<form name="myform" onSubmit="return handleClick4()">
+
+
+    <input name="Submit"  type="submit" value="New Phrase" >
+    <input type="text" id="myPhrase" placeholder="Note Phrase&hellip;">
+</form>
+
+<ul></ul>
+
+
+<script>
+    $('#xChecked').click(function() {
+        isXChecked = !isXChecked;
+
+    });
+
+    $('#yChecked').click(function() {
+        isYChecked = !isYChecked;
+        drag //previously dragbartop
+            .attr("fill-opacity", (isYChecked ? 0.5 : 0))
+            .attr("cursor", (isYChecked ? "ns-resize" : "move"));
+        
+    });
+</script>
+
+
+<script type="text/javascript" src="pianoRollScript.js"></script>
+
+</body>
+</html>
