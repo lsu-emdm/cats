@@ -20,79 +20,80 @@
 <body>
 
 
-<input type='file' onchange="accessJSONFile()"><br>
+<div class="dataInputs">
+	<input type='file' onchange="accessJSONFile()"><br>
+
+	<!--<canvas nx="waveform" style="width:846px;height:100px;display:block;margin:100px auto 0px"/>-->
+	<div id="saveModificationsButton">
+	    <input name="SaveModification"
+	           type="button"
+	           value="SaveModifications"
+	           onclick="saveFinalModifications()" />
+	</div>
+
+	<div id="option2">
+	    <input name="SelectRegion"
+	           type="button"
+	           value="PlaySelectedRegion"
+	           onclick="playSection()" />
+	</div>
+
+	<div id="checks">
+	    X-axis:<input type="checkbox" id="xChecked" checked/>
+	    Y-axis:<input type="checkbox" id="yChecked" checked/>
+	</div>
+
+	<div id="phraseOption">
+	    <input name="SelectPhrase"
+	           type="button"
+	           value="GeneratePhrase"
+	           onclick="generatePhrase()" />
+	</div>
+
+	<div id="finalOption">
+	    <input name="SelectRegion"
+	           type="button"
+	           value="GenerateNote"
+	           onclick="generateNote()" />
+	</div>
+
+	<form class = "Form1" name="myform" onSubmit="return handleClick()" >
+	    <input name="Submit"  type="submit" value="New Note Start Time" >
+	    <input type="text" id="myVal" placeholder="New Note Start Time&hellip;">
 
 
-<!--<canvas nx="waveform" style="width:846px;height:100px;display:block;margin:100px auto 0px"/>-->
-<div id="saveModificationsButton">
-    <input name="SaveModification"
-           type="button"
-           value="SaveModifications"
-           onclick="saveFinalModifications()" />
+	</form>
+
+	<form name="myform" onSubmit="return handleClick1()">
+
+	    <input name="Submit"  type="submit" value="New Note Pitch" >
+	    <input type="text" id="myVal1" placeholder="New Note Pitch&hellip;">
+
+	</form>
+
+	<form name="myform" onSubmit="return handleClick2()">
+
+	    <input name="Submit"  type="submit" value="New Note Duration" >
+	    <input type="text" id="myVal2" placeholder="New Note Duration&hellip;">
+	</form>
+
+	<form name="myform" onSubmit="return handleClick3()">
+
+
+	    <input name="Submit"  type="submit" value="New Note Lane" >
+	    <input type="text" id="myVal3" placeholder="Note Lane&hellip;">
+	</form>
+
+	<form name="myform" onSubmit="return handleClick4()">
+
+
+	    <input name="Submit"  type="submit" value="New Phrase" >
+	    <input type="text" id="myPhrase" placeholder="Note Phrase&hellip;">
+	</form>
+
+	<ul></ul>
+
 </div>
-
-<div id="option2">
-    <input name="SelectRegion"
-           type="button"
-           value="PlaySelectedRegion"
-           onclick="playSection()" />
-</div>
-
-<div id="checks">
-    X-axis:<input type="checkbox" id="xChecked" checked/>
-    Y-axis:<input type="checkbox" id="yChecked" checked/>
-</div>
-
-<div id="phraseOption">
-    <input name="SelectPhrase"
-           type="button"
-           value="GeneratePhrase"
-           onclick="generatePhrase()" />
-</div>
-
-<div id="finalOption">
-    <input name="SelectRegion"
-           type="button"
-           value="GenerateNote"
-           onclick="generateNote()" />
-</div>
-
-<form class = "Form1" name="myform" onSubmit="return handleClick()" >
-    <input name="Submit"  type="submit" value="New Note Start Time" >
-    <input type="text" id="myVal" placeholder="New Note Start Time&hellip;">
-
-
-</form>
-
-<form name="myform" onSubmit="return handleClick1()">
-
-    <input name="Submit"  type="submit" value="New Note Pitch" >
-    <input type="text" id="myVal1" placeholder="New Note Pitch&hellip;">
-
-</form>
-
-<form name="myform" onSubmit="return handleClick2()">
-
-
-    <input name="Submit"  type="submit" value="New Note Duration" >
-    <input type="text" id="myVal2" placeholder="New Note Duration&hellip;">
-</form>
-
-<form name="myform" onSubmit="return handleClick3()">
-
-
-    <input name="Submit"  type="submit" value="New Note Lane" >
-    <input type="text" id="myVal3" placeholder="Note Lane&hellip;">
-</form>
-
-<form name="myform" onSubmit="return handleClick4()">
-
-
-    <input name="Submit"  type="submit" value="New Phrase" >
-    <input type="text" id="myPhrase" placeholder="Note Phrase&hellip;">
-</form>
-
-<ul></ul>
 
 
 <script>

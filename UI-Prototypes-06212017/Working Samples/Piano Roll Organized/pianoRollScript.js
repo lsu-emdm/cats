@@ -26,8 +26,8 @@ console.log(lanes);
 ////////////////////////////////////////////////////////////////////////////////
 
 var m = [20, 15, 15, 80], //top right bottom left
-    w = 1300 - m[1] - m[3],
-    h = 500 - m[0] - m[2],
+    w = 900 - m[1] - m[3],
+    h = 600 - m[0] - m[2],
     miniHeight = laneLength * 18,  //removed *12 //with *18, this is
     mainHeight = h - miniHeight - 50;
 
@@ -61,8 +61,8 @@ var randomColor = Math.floor(Math.random()*16777215).toString(16);
 
 var chart = d3.select("body")
     .append("svg")
-    .attr("width", w + m[1] + m[3]+400)
-    .attr("height", h + 500)
+    .attr("width", w + m[1] + m[3])
+    .attr("height", h )
     //.attr("height", h + m[0] + m[2])
     .attr("class", "chart")
     .attr('id','mySVG')
