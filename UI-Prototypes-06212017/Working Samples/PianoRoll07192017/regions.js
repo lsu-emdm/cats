@@ -1,4 +1,3 @@
-
 function Region(pText, startNote, endNote) {
 	this.phraseNumber;
 	this.phraseText = pText ? pText : "Oh say can you see";
@@ -18,12 +17,12 @@ Region.prototype.startTime = function(){
 	return notes[this.startNote].time
 }
 
-Region.prototype.updateNotesInRegion(note, action) {
+Region.prototype.updateNotesInRegion(noteIndex, action) {
 	if(action == "remove"){
-		if(note <= this.startNote){
+		if(noteIndex <= this.startNote){
 			this.startNote = this.startNote - 1;
 		}
-		if(note <= this.endNote){
+		if(noteIndex <= this.endNote){
 			this.endNote = this.endNote - 1;
 		}
 	} else if (action == "add") {
@@ -33,13 +32,13 @@ Region.prototype.updateNotesInRegion(note, action) {
 
 
 
-/*
+//*/
 // To Create
 region1 = new Region("Oh Say can you see", 1 ,6);
 
 // text?
 region1.phraseText
-region1.startTime()
+regionStartTime = region1.startTime()
 regionNotes = region1.notesInRegion()
 region1.updateNotesInRegion(110,"remove");
-*/
+//*/
